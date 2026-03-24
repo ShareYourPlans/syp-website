@@ -51,7 +51,7 @@
 
   <h2>1. Identity of the Data Controller</h2>
   <p>The entity responsible for processing your personal data in connection with the SYP application is:</p>
-  <p><strong>Share Your Plans SRL</strong><br/>Incorporated under Belgian law &nbsp;|&nbsp; BCE No. BE1034.288.729<br/>Email: <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a></p>
+  <p><strong>Share Your Plans SRL</strong><br/>Incorporated under Belgian law &nbsp;|&nbsp; BCE No. BE1034.288.729<br/>Email: <a href="/cdn-cgi/l/email-protection#7707051e0116140e37040e075a1607075914181a" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="d2a2a0bba4b3b1ab92a1aba2ffb3a2a2fcb1bdbf">[email&#160;protected]</span></a></p>
   <p>Share Your Plans SRL acts as the sole data controller for all personal data collected through the Platform. There is no subsidiary or local entity involved in data processing at this stage of operations.</p>
 
   <h2>2. Scope of This Policy</h2>
@@ -95,7 +95,13 @@
   <p>Once a Match is finalised through the Double Acceptance process, Users may exchange messages through the Platform's in-app Chat Thread. We store the content of these messages to ensure the integrity and continuity of the service, and to enable content moderation where required.</p>
 
   <h3>3.6 Payment Data</h3>
-  <p>If you subscribe to a payment plan, payment is processed exclusively by our authorised payment provider. SYP does not store full payment card numbers or sensitive financial credentials. We retain only the data necessary to manage your subscription status (subscription tier, billing period, transaction reference).</p>
+  <p>If you subscribe to a payment plan:</p>
+  <ul>
+    <li>On <strong>Android devices</strong>, payments are processed via <strong>Google Play Billing</strong></li>
+    <li>On <strong>iOS devices</strong>, payments are processed via <strong>Apple StoreKit</strong></li>
+    <li>For web or alternative payment flows (if applicable), we may use providers such as <strong>HitPay or Stripe</strong>, acting as independent data controllers</li>
+  </ul>
+  <p>SYP does not store full payment card numbers or sensitive financial credentials. We retain only the data necessary to manage your subscription (subscription tier, billing status, transaction reference).</p>
 
   <h3>3.7 Inferences and Derived Data</h3>
   <p>As part of its Matching algorithm, the Platform generates inferences about your preferences and activity patterns based on the Plans you create and the Matches you accept or decline. These inferences are used solely to improve the relevance of future Match suggestions. They are not shared with third parties, not used for advertising purposes, and are permanently deleted upon account closure.</p>
@@ -112,13 +118,24 @@
   <h2>5. Purposes of Processing</h2>
   <p>We use your personal data strictly for the following purposes: creating and managing your user account and profile; operating the Plan publication and Matching features; delivering Match notifications and enabling in-app messaging after Double Acceptance; generating inferences to improve Match relevance; managing subscription status and billing records; ensuring platform security and preventing fraud; responding to user support requests; complying with legal obligations; and improving Platform performance through aggregated, anonymised analytics.</p>
 
+  <p>SYP does not use personal data for targeted advertising or cross-application tracking. We do not sell personal data to advertisers.</p>
+  <p>Users are solely responsible for their interactions and any in-person meetings with other users. SYP does not verify user identity beyond basic registration requirements and does not guarantee the behaviour of any user.</p>
+
   <h2>6. Data Storage and Infrastructure</h2>
 
   <h3>6.1 Storage Location</h3>
-  <p>All personal data is stored on Amazon Web Services (AWS) infrastructure, in the Asia-Pacific region (ap-southeast-1 — Singapore, or equivalent). We do not use additional third-party sub-processors at launch beyond AWS.</p>
+  <p>All personal data is stored on <strong>Railway</strong> infrastructure (application hosting) and <strong>Neon</strong> (PostgreSQL database), both operating on cloud infrastructure with data processing in accordance with applicable data protection standards.</p>
+  <p>In addition, we use selected third-party service providers strictly necessary for the operation of the Platform, including:</p>
+  <ul>
+    <li><strong>Google Firebase</strong> — push notifications, analytics, crash reporting</li>
+    <li><strong>Google Play Billing</strong> — subscription management and in-app purchases (Android)</li>
+    <li><strong>Apple StoreKit</strong> — subscription management and in-app purchases (iOS)</li>
+    <li><strong>Apple Push Notification Service (APNs)</strong> — push notifications (iOS)</li>
+  </ul>
+  <p>These providers process data under their own privacy policies and in accordance with applicable regulations.</p>
 
   <h3>6.2 Security Measures</h3>
-  <p>We implement appropriate technical and organisational measures to protect your personal data, including: encryption of data in transit (TLS 1.2 or higher), encryption of data at rest on AWS RDS, access controls and role-based permissions, authentication through Keycloak including token-based session management, and rate limiting to mitigate abuse.</p>
+  <p>We implement appropriate technical and organisational measures to protect your personal data, including: encryption of data in transit (TLS 1.2 or higher), encryption of data at rest (Neon PostgreSQL), access controls and role-based permissions, authentication through Keycloak including token-based session management, and rate limiting to mitigate abuse.</p>
 
   <h3>6.3 Data Retention</h3>
   <ul>
@@ -136,26 +153,25 @@
   <h3>6.5 Post-Closure Safety Retention Window</h3>
   <p>Following account closure, we retain a limited subset of your data for 3 months as a safety retention window (extended to 1 year in the event of an account ban). The purpose is to enable investigation of any unlawful conduct or violations that may come to our attention after closure.</p>
 
+  <h3>6.6 Data Breach Notification</h3>
+  <p>In the event of a personal data breach that is likely to affect your rights or security, we will notify affected users and relevant authorities in accordance with applicable laws, including UU PDP No. 27/2022.</p>
+
   <h2>7. Sharing of Personal Data</h2>
   <p>We do not sell, rent, or commercially exploit your personal data. We share personal data only in the following limited circumstances:</p>
   <ul>
     <li><strong>With Other Users</strong> — certain profile information is visible after Double Acceptance. In Explorer Mode, only nickname and Plan details are visible.</li>
-    <li><strong>User Reports and Moderation</strong> — relevant data may be reviewed by our moderation team as part of an investigation.</li>
-    <li><strong>With AWS</strong> — as infrastructure provider and data processor under our instruction.</li>
-    <li><strong>With Payment Processors</strong> — for subscription billing, acting as independent data controllers.</li>
+    <li><strong>User Reports and Moderation</strong> — data may be reviewed internally to ensure platform safety.</li>
+    <li><strong>Infrastructure Providers (Railway, Neon)</strong> — infrastructure data for application hosting and database storage.</li>
+    <li><strong>Technology Providers (Google Firebase)</strong> — device and usage data for app functionality, analytics, and crash reporting.</li>
+    <li><strong>Payment Providers (Google Play Billing, Apple StoreKit)</strong> — subscription status and billing processing.</li>
     <li><strong>With Authorities</strong> — where required by Indonesian law, court order, or governmental authority.</li>
     <li><strong>In Corporate Restructuring</strong> — in the event of a merger or acquisition, with equivalent privacy protections and prior user notification.</li>
   </ul>
+  <p>We only share the minimum data necessary for each purpose.</p>
 
   <h2>8. Your Rights Under UU PDP</h2>
   <p>As a data subject under UU PDP No. 27/2022, you have the right to: access your data, correct inaccuracies, request deletion (fulfilled within 30 days), restrict processing, object to processing based on legitimate interest, withdraw consent, and request data portability.</p>
-  <p>To exercise your rights, submit a written request to <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>. We will respond within 14 calendar days. You also have the right to lodge a complaint with the competent Indonesian supervisory authority responsible for personal data protection.</p>
+  <p>To exercise your rights, submit a written request to <a href="/cdn-cgi/l/email-protection#6212100b1403011b22111b124f0312124c010d0f" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="88f8fae1fee9ebf1c8fbf1f8a5e9f8f8a6ebe7e5">[email&#160;protected]</span></a>. We will respond within 14 calendar days. You also have the right to lodge a complaint with the competent Indonesian supervisory authority responsible for personal data protection.</p>
 
   <h2>9. Protection of Minors</h2>
-  <p>The SYP Platform is strictly intended for users aged 18 and over. We do not knowingly collect personal data from individuals under the age of 18. If we become aware that a minor has registered on the Platform, we will immediately suspend the account and delete the associated personal data. To report a minor's account: <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>.</p>
-
-  <h2>10. Cookies and Similar Technologies</h2>
-  <p>The SYP mobile application does not use traditional browser cookies. However, we may use local device storage and session tokens to maintain your authenticated session and remember your preferences. These are strictly necessary for the operation of the Platform and are not used for advertising or cross-application tracking.</p>
-
-  <h2>11. Changes to This Privacy Policy</h2>
-  <p>We may update this Privacy Policy from time to time. In the event of material changes, we will notify you via in-app notification or 
+  <p>The SYP Platform is strictly intended for users aged 18 and over. We do not knowingly collect personal data from individuals under the age of 18. If we become aware that a minor has registered on the Platform, we will immediately suspend the account and delete the associated personal data. To report a min
