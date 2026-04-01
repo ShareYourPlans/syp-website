@@ -45,9 +45,8 @@
 <div class="legal-wrap">
   <p class="legal-eyebrow">Legal · Indonesia Operations</p>
   <h1>Privacy Policy</h1>
-  <p class="legal-meta">Effective Date: March 2026 &nbsp;|&nbsp; Share Your Plans SRL · BCE No. BE1034.288.729 &nbsp;|&nbsp; UU PDP No. 27/2022 Compliant</p>
+  <p class="legal-meta">Effective Date: April 2026 &nbsp;|&nbsp; Share Your Plans SRL · BCE No. BE1034.288.729 &nbsp;|&nbsp; UU PDP No. 27/2022 Compliant</p>
 
-  <p>This Privacy Policy applies to the SYP mobile application as made available at the date of its initial launch in Indonesia. Features not yet available at launch — including multi-user group chat, Visibility Booster, in-app advertising, and other planned capabilities — are not covered by this document and will be addressed in future versions.</p>
 
   <h2>1. Identity of the Data Controller</h2>
   <p>The entity responsible for processing your personal data in connection with the SYP application is:</p>
@@ -90,6 +89,7 @@
 
   <h3>3.4 Usage and Technical Data</h3>
   <p>We automatically collect: device type and operating system version, app version, session timestamps and duration, log data (errors, crash reports), and IP address (used for security and fraud prevention only — not used for location tracking).</p>
+  <p>This data may be collected in part through third-party analytics and crash reporting SDKs integrated in the app. These tools collect device identifiers and usage data solely for the purpose of monitoring app stability and performance. This data is not used for advertising or cross-application tracking.</p>
 
   <h3>3.5 Communication Data</h3>
   <p>Once a Match is finalised through the Double Acceptance process, Users may exchange messages through the Platform's in-app Chat Thread. We store the content of these messages to ensure the integrity and continuity of the service, and to enable content moderation where required.</p>
@@ -100,7 +100,6 @@
   <ul>
     <li>On <strong>Android devices</strong>, payments are processed via <strong>Google Play Billing</strong></li>
     <li>On <strong>iOS devices</strong>, payments are processed via <strong>Apple StoreKit</strong></li>
-    <li>For web or alternative payment flows (if applicable), we may use providers such as <strong>HitPay or Stripe</strong>, acting as independent data controllers</li>
   </ul>
   <p>SYP does not store full payment card numbers or sensitive financial credentials. We retain only the data necessary to manage your subscription (subscription tier, billing status, transaction reference).</p>
 
@@ -124,21 +123,22 @@
   <h2>6. Data Storage and Infrastructure</h2>
 
   <h3>6.1 Storage Location</h3>
-  <p>All personal data is hosted on cloud infrastructure provided by <strong>Railway</strong> (application hosting) and <strong>Neon</strong> (PostgreSQL database services), which operate on distributed cloud environments. These providers implement appropriate technical and organisational measures to ensure the security and integrity of personal data in accordance with industry standards.</p>
-  <p>We use selected third-party service providers strictly necessary for the operation of the Platform, including but not limited to infrastructure providers, database hosting services, analytics tools, notification services, and payment processors. These providers process personal data under their own privacy policies and in accordance with applicable data protection regulations. At launch, these include:</p>
+  <p>All personal data is stored on cloud infrastructure and database hosting services operated by third-party providers. These providers implement appropriate technical and organisational measures to ensure the security and integrity of personal data in accordance with industry standards. They act as data processors under our instruction and do not use your data for their own purposes.</p>
+  <p>In addition, we use the following third-party providers whose processing of your data is directly relevant to the services you receive:</p>
   <ul>
-    <li><strong>Google Firebase</strong> — push notifications, analytics, crash reporting</li>
-    <li><strong>Google Play Billing</strong> — subscription management and in-app purchases (Android)</li>
-    <li><strong>Apple StoreKit</strong> — subscription management and in-app purchases (iOS)</li>
-    <li><strong>Apple Push Notification Service (APNs)</strong> — push notifications (iOS)</li>
+    <li><strong>Analytics and crash reporting provider</strong> — push notifications, app analytics, and crash reporting. Device and usage data is processed solely for app stability and performance monitoring.</li>
+    <li><strong>Google Play Billing</strong> — subscription management and in-app purchases (Android). Acts as an independent data controller for payment data.</li>
+    <li><strong>Apple StoreKit</strong> — subscription management and in-app purchases (iOS). Acts as an independent data controller for payment data.</li>
+    <li><strong>Push notification service (iOS)</strong> — delivery of push notifications on iOS devices.</li>
   </ul>
+  <p>A full list of our infrastructure and sub-processors is available upon request at <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>.</p>
 
   <h3>6.2 Security Measures</h3>
-  <p>We implement appropriate technical and organisational measures to protect your personal data, including: encryption of data in transit (TLS 1.2 or higher), encryption of data at rest (Neon PostgreSQL), access controls and role-based permissions, authentication through Keycloak including token-based session management, and rate limiting to mitigate abuse.</p>
+  <p>We implement appropriate technical and organisational measures to protect your personal data, including: encryption of data in transit (TLS 1.2 or higher), encryption of data at rest on our database infrastructure, access controls and role-based permissions, token-based authentication and session management, and rate limiting to mitigate abuse.</p>
 
   <h3>6.3 Data Retention</h3>
   <ul>
-    <li>Account and profile data: retained for the duration of the account and deleted within 30 days of a valid deletion request</li>
+    <li>Account and profile data: retained for the duration of the account and deleted within 15 days of a valid deletion request</li>
     <li>Plan data and Match history: retained for the duration of the account</li>
     <li>In-app Chat Thread messages: retained for the duration of the account; copies may be retained for a limited additional period for safety, moderation, or legal compliance purposes</li>
     <li>Inferred data: deleted upon account closure</li>
@@ -146,16 +146,23 @@
     <li>Billing records: retained for 5 years in accordance with Indonesian accounting and tax obligations</li>
   </ul>
 
+  <p>If you have an active subscription at the time of your account deletion request, you will be guided to cancel your subscription before the deletion is processed. Deleting your account does not automatically cancel an active subscription.</p>
+
   <h3>6.4 Inactive Accounts</h3>
   <p>If your account has been inactive for a continuous period of 2 years (no login or activity), we reserve the right to close it automatically. You will be notified by email at least 30 days before any automatic closure.</p>
 
   <h3>6.5 Post-Closure Safety Retention Window</h3>
   <p>Following account closure, we retain a limited subset of your data for 3 months as a safety retention window (extended to 1 year in the event of an account ban). The purpose is to enable investigation of any unlawful conduct or violations that may come to our attention after closure.</p>
 
-  <h3>6.6 Data Breach Notification</h3>
+  <h3>6.6 Suspended vs. Deleted Accounts</h3>
+  <p>If your account is suspended, your profile will no longer be visible to other users on the Platform. However, your data will be retained for the duration of the suspension period, as your account may be reinstated at the end of that period.</p>
+  <p>During a suspension, you may contact us at <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a> to request early deletion of your account and associated data before the suspension period ends.</p>
+  <p>Once your account is closed — including if you do not log back in within 2 years following the end of a suspension period — your data is deleted in accordance with the retention schedule set out above.</p>
+
+  <h3>6.7 Data Breach Notification</h3>
   <p>In the event of a personal data breach that is likely to affect your rights or security, we will notify affected users and relevant authorities in accordance with applicable laws, including UU PDP No. 27/2022.</p>
 
-  <h3>6.7 International Data Transfers</h3>
+  <h3>6.8 International Data Transfers</h3>
   <div class="highlight-box">
     <p>Personal data may be processed and stored outside the territory of Indonesia, including in jurisdictions where our infrastructure and technology providers operate. These jurisdictions may not have the same level of data protection as Indonesia. However, we ensure that such transfers are carried out in accordance with applicable Indonesian data protection laws and are subject to appropriate safeguards to protect your personal data. By using the Platform, you acknowledge and consent to such cross-border data transfers as necessary for the operation of the service.</p>
   </div>
@@ -165,8 +172,8 @@
   <ul>
     <li><strong>With Other Users</strong> — certain profile information is visible after Double Acceptance. In Explorer Mode, only nickname and Plan details are visible.</li>
     <li><strong>User Reports and Moderation</strong> — data may be reviewed internally to ensure platform safety.</li>
-    <li><strong>Infrastructure Providers (Railway, Neon)</strong> — infrastructure data for application hosting and database storage.</li>
-    <li><strong>Technology Providers (Google Firebase)</strong> — device and usage data for app functionality, analytics, and crash reporting.</li>
+    <li><strong>Infrastructure and Database Hosting Providers</strong> — technical data for application hosting and database storage. These providers act as data processors under our instruction.</li>
+    <li><strong>Analytics and Technology Providers</strong> — device and usage data for app functionality, analytics, and crash reporting.</li>
     <li><strong>Payment Providers (Google Play Billing, Apple StoreKit)</strong> — subscription status and billing processing.</li>
     <li><strong>With Authorities</strong> — where required by Indonesian law, court order, or governmental authority.</li>
     <li><strong>In Corporate Restructuring</strong> — in the event of a merger or acquisition, with equivalent privacy protections and prior user notification.</li>
@@ -174,12 +181,13 @@
   <p>We only share the minimum data necessary for each purpose.</p>
 
   <h2>8. Your Rights Under UU PDP</h2>
-  <p>As a data subject under UU PDP No. 27/2022, you have the right to: access your data, correct inaccuracies, request deletion (fulfilled within 30 days), restrict processing, object to processing based on legitimate interest, withdraw consent, and request data portability.</p>
-  <p>To exercise your rights, submit a written request to <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>. We will respond within 14 to 30 calendar days, depending on the complexity of the request. You also have the right to lodge a complaint with the competent Indonesian supervisory authority responsible for personal data protection.</p>
+  <p>As a data subject under UU PDP No. 27/2022, you have the right to: access your data, correct inaccuracies, request deletion (fulfilled within 15 days), restrict processing, object to processing based on legitimate interest, withdraw consent, and request data portability.</p>
+  <p><strong>Account deletion:</strong> You may delete your account directly from within the app at any time via the Settings menu. This will initiate the deletion of your account and associated personal data. You may also submit a deletion request by email.</p>
+  <p>To exercise any of your rights, submit a written request to <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>. We will respond within 14 calendar days. In complex cases, this period may be extended to 30 days, in which case we will notify you of the extension. You also have the right to lodge a complaint with the competent Indonesian supervisory authority responsible for personal data protection.</p>
 
   <h2>9. Protection of Minors</h2>
   <p>The SYP Platform is strictly intended for users aged 18 and over. We do not knowingly collect personal data from individuals under the age of 18. If we become aware that a minor has registered on the Platform, we will immediately suspend the account and delete the associated personal data.</p>
-  <p>To report a minor on the Platform, please contact us at <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>.</p>
+  <p>To report a minor on the Platform, please use the in-app reporting feature available on any user profile, or contact us directly at <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>.</p>
 
   <h2>10. Cookies and Similar Technologies</h2>
   <p>The SYP mobile application does not use traditional browser cookies. However, we may use local device storage and session tokens to maintain your authenticated session and remember your preferences. These are strictly necessary for the operation of the Platform and are not used for advertising or cross-application tracking.</p>
@@ -192,7 +200,7 @@
   <h2>12. Contact — Data Protection</h2>
   <p>For any questions, requests, or concerns relating to this Privacy Policy or the processing of your personal data, please contact:</p>
   <p><strong>Share Your Plans SRL</strong><br/>BCE No. BE1034.288.729 &nbsp;|&nbsp; Incorporated under Belgian law<br/>Email: <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a></p>
-  <p>We aim to respond to all privacy-related inquiries within 14 to 30 calendar days of receipt.</p>
+  <p>We aim to respond to all privacy-related inquiries within 14 calendar days of receipt. In complex cases, this period may be extended to 30 days, and we will notify you of any such extension.</p>
 
 </div>
 
@@ -205,7 +213,7 @@
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="mailto:privacy@syp-app.com">Contact</a>
   </div>
-  <p class="footer-copy">Last Updated: March 2026 &nbsp;·&nbsp; Version 1.4 &nbsp;·&nbsp; UU PDP No. 27/2022 Compliant</p>
+  <p class="footer-copy">Last Updated: April 2026 &nbsp;·&nbsp; Version 1.4 &nbsp;·&nbsp; UU PDP No. 27/2022 Compliant</p>
 </footer>
 
 </body>
