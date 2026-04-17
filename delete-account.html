@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Account Deletion – SYP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    :root{--gold:#D4A017;--black:#0A0A0A;--white:#FAFAF8;--gray:#6B6B6B;--gray-light:#E8E6E1}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-light)}
+    .nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+    .nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+    .back{font-size:.82rem;color:var(--gray);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+    .back:hover{color:var(--black)}
+    .legal-wrap{max-width:760px;margin:0 auto;padding:8rem 2rem 5rem}
+    .legal-eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
+    .legal-wrap h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.15}
+    .legal-meta{font-size:.82rem;color:var(--gray);margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--gray-light)}
+    .legal-wrap h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin:2.5rem 0 .75rem;color:var(--black)}
+    .legal-wrap p{font-size:.92rem;color:#444;line-height:1.85;margin-bottom:.9rem;font-weight:300}
+    .legal-wrap ul{margin:.5rem 0 .9rem 1.2rem}
+    .legal-wrap ul li{font-size:.92rem;color:#444;line-height:1.85;margin-bottom:.4rem;font-weight:300}
+    .highlight-box{background:#F5F3EE;border-left:3px solid var(--gold);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0;margin:1.5rem 0}
+    .highlight-box p{margin:0;font-size:.88rem}
+
+    .deletion-form{margin-top:2rem}
+    .form-group{margin-bottom:1.5rem}
+    .form-label{display:block;font-size:.85rem;font-weight:500;color:var(--black);margin-bottom:.4rem}
+    .form-input,.form-textarea{width:100%;padding:.75rem 1rem;border:1px solid var(--gray-light);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--black);background:var(--white);transition:border-color .2s}
+    .form-input:focus,.form-textarea:focus{outline:none;border-color:var(--gold)}
+    .form-textarea{min-height:120px;resize:vertical}
+    .form-input.error,.form-textarea.error{border-color:#c0392b}
+    .form-hint{font-size:.78rem;color:var(--gray);margin-top:.25rem}
+    .form-error{font-size:.78rem;color:#c0392b;margin-top:.25rem;display:none}
+    .form-error.visible{display:block}
+    .checkbox-group{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:1.5rem}
+    .checkbox-group input[type="checkbox"]{margin-top:.2rem;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0}
+    .checkbox-group label{font-size:.88rem;color:#444;line-height:1.5;cursor:pointer;font-weight:300}
+    .btn-submit{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:var(--white);padding:.85rem 2.4rem;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.02em;cursor:pointer;transition:background .2s,opacity .2s}
+    .btn-submit:hover:not(:disabled){background:var(--gold)}
+    .btn-submit:disabled{opacity:.5;cursor:not-allowed}
+    .turnstile-wrap{margin-bottom:1.5rem}
+
+    .success-message{display:none;text-align:center;padding:3rem 1rem}
+    .success-message.visible{display:block}
+    .success-icon{font-size:3rem;margin-bottom:1rem}
+    .success-message h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--black);margin-bottom:.75rem}
+    .success-message p{font-size:.92rem;color:#444;line-height:1.85;max-width:500px;margin:0 auto .5rem;font-weight:300}
+    .alert-error{background:#FFF5F5;border-left:3px solid #c0392b;padding:1rem 1.2rem;border-radius:0 8px 8px 0;margin-bottom:1.5rem;font-size:.88rem;color:#c0392b;display:none}
+    .alert-error.visible{display:block}
+
+    footer{background:var(--black);color:rgba(250,250,248,.5);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem}
+    .footer-links a{color:rgba(250,250,248,.5);text-decoration:none;font-size:.8rem;margin-left:1.5rem;transition:color .2s}
+    .footer-links a:hover{color:white}
+    .footer-copy{font-size:.75rem;width:100%;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+    @media(max-width:700px){nav{padding:1rem 1.5rem}.legal-wrap{padding:6rem 1.2rem 3rem}footer{padding:2rem 1.5rem;flex-direction:column}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="SYP" />
+  </a>
+  <a class="back" href="index.html">← Back</a>
+</nav>
+
+<div class="legal-wrap">
+  <p class="legal-eyebrow">Account Management</p>
+  <h1>Request Account Deletion</h1>
+  <p class="legal-meta">Share Your Plans SRL &nbsp;·&nbsp; SYP App</p>
+
+  <h2>What happens when you delete your account</h2>
+  <p>When you request account deletion through this form, we will permanently remove the following data associated with your SYP account:</p>
+  <ul>
+    <li>Your profile information (name, email, bio, photo)</li>
+    <li>All Plans you have created</li>
+    <li>Activity participation history</li>
+    <li>Match history and join requests</li>
+    <li>All chat messages you have sent or received</li>
+    <li>Uploaded images</li>
+    <li>Inferred data and matching preferences</li>
+    <li>Device and usage data</li>
+  </ul>
+
+  <h2>Timeline</h2>
+  <p>Account deletion requests are processed within <strong>30 days</strong>. You will not be able to recover your account or any associated data once the deletion is complete.</p>
+
+  <h2>Data retention</h2>
+  <p>Certain data may be retained after deletion where required by law:</p>
+  <ul>
+    <li><strong>Billing records</strong> — retained for 5 years in accordance with accounting and tax obligations</li>
+    <li><strong>Safety-related data</strong> — retained for up to 3 months following account closure for safety and moderation purposes, as described in our <a href="privacy-policy.html" style="color:var(--gold)">Privacy Policy</a></li>
+  </ul>
+
+  <div class="highlight-box">
+    <p><strong>Before you proceed:</strong> If you have an active subscription, please cancel it first via your device's App Store or Google Play Store subscription settings. Deleting your account does not automatically cancel an active subscription.</p>
+  </div>
+
+  <div id="form-section">
+    <h2>Submit your request</h2>
+
+    <div id="form-alert" class="alert-error"></div>
+
+    <form id="deletion-form" class="deletion-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="email">Email address *</label>
+        <input class="form-input" type="email" id="email" name="email" required placeholder="Enter the email associated with your SYP account" />
+        <div id="email-error" class="form-error">Please enter a valid email address.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="full-name">Full name</label>
+        <input class="form-input" type="text" id="full-name" name="full_name" placeholder="Optional" />
+        <p class="form-hint">Helps us verify your identity.</p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="reason">Reason for deletion</label>
+        <textarea class="form-textarea" id="reason" name="reason" placeholder="Optional — let us know why you're leaving so we can improve"></textarea>
+      </div>
+
+      <div class="turnstile-wrap">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAC-gqC6iH9tG5Cm2" data-theme="light"></div>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="confirm" name="confirm" required />
+        <label for="confirm">I understand that this action is irreversible and that my account and all associated data will be permanently deleted within 30 days.</label>
+      </div>
+      <div id="confirm-error" class="form-error">You must confirm before submitting.</div>
+
+      <button type="submit" class="btn-submit" id="submit-btn">Submit Deletion Request</button>
+    </form>
+  </div>
+
+  <div id="success-section" class="success-message">
+    <div class="success-icon">&#10003;</div>
+    <h2>Request Submitted</h2>
+    <p>Your account deletion request has been received. We will process it within <strong>30 days</strong>.</p>
+    <p>If you have any questions, contact us at <a href="mailto:privacy@syp-app.com" style="color:var(--gold)">privacy@syp-app.com</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <span style="font-size:.8rem">© 2026 Share Your Plans SRL &nbsp;·&nbsp; BCE No. BE1034.288.729</span>
+  </div>
+  <div class="footer-links">
+    <a href="terms-of-service.html">Terms of Service</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="payments.html">Payments</a>
+    <a href="mailto:privacy@syp-app.com">Contact</a>
+  </div>
+  <p class="footer-copy">Last Updated: April 2026</p>
+</footer>
+
+<script>
+(function() {
+  var API_URL = 'https://syp-backend-production.up.railway.app/api/account-deletion';
+  var form = document.getElementById('deletion-form');
+  var formSection = document.getElementById('form-section');
+  var successSection = document.getElementById('success-section');
+  var alertEl = document.getElementById('form-alert');
+  var submitBtn = document.getElementById('submit-btn');
+
+  function showAlert(msg) {
+    alertEl.textContent = msg;
+    alertEl.classList.add('visible');
+  }
+
+  function hideAlert() {
+    alertEl.classList.remove('visible');
+    alertEl.textContent = '';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideAlert();
+
+    var email = document.getElementById('email').value.trim();
+    var fullName = document.getElementById('full-name').value.trim();
+    var reason = document.getElementById('reason').value.trim();
+    var confirm = document.getElementById('confirm').checked;
+
+    document.getElementById('email-error').classList.remove('visible');
+    document.getElementById('confirm-error').classList.remove('visible');
+    document.getElementById('email').classList.remove('error');
+
+    var hasError = false;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('email-error').classList.add('visible');
+      document.getElementById('email').classList.add('error');
+      hasError = true;
+    }
+
+    if (!confirm) {
+      document.getElementById('confirm-error').classList.add('visible');
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    var turnstileResponse = '';
+    var turnstileInput = document.querySelector('[name="cf-turnstile-response"]');
+    if (turnstileInput) {
+      turnstileResponse = turnstileInput.value;
+    }
+
+    if (!turnstileResponse) {
+      showAlert('Please complete the captcha verification.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        full_name: fullName || null,
+        reason: reason || null,
+        turnstile_token: turnstileResponse
+      })
+    })
+    .then(function(response) {
+      if (response.ok) return response.json();
+      return response.json().then(function(err) {
+        throw new Error(err.detail || err.title || 'Something went wrong. Please try again.');
+      });
+    })
+    .then(function() {
+      formSection.style.display = 'none';
+      successSection.classList.add('visible');
+    })
+    .catch(function(err) {
+      showAlert(err.message || 'Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Deletion Request';
+      if (typeof turnstile !== 'undefined') {
+        turnstile.reset();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
